@@ -26,6 +26,7 @@
           class="f-input-m"
           placeholder="value"
           v-if="formatSelected == 'string'"
+          @click="openModal(valName, 'form')"
         >
         <input
           type="number"
@@ -34,6 +35,7 @@
           placeholder="value"
           v-if="formatSelected == 'number'"
           @change="dealNumber"
+          @click="openModal(valName, 'form')"
         >
         <select
           name="value"
@@ -41,6 +43,7 @@
           class="f-input-m"
           v-if="formatSelected == 'boolean'"
           @change="dealBoolean"
+          @click="openModal(valName, 'form')"
         >
           <option :value="true">true</option>
           <option :value="false">false</option>
@@ -60,6 +63,12 @@
         {{ this.formBtnText.cancelText }}
       </button>
     </div>
+
+    <form-modal v-if="showModal == true"
+      :data="modalData"
+      @close="closeModal"
+      :type="type"
+    />
   </div>
 </template>
 
@@ -72,7 +81,10 @@ export default {
       formatSelected: 'string',
       //--
       keyName: '',
-      valName: ''
+      valName: '',
+      type: null,
+      modalData: {},
+      showModal: false,
     };
   },
   props: {

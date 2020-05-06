@@ -12,7 +12,7 @@ config.optimization = {
 
 config.output = {
   path: path.resolve(__dirname, './dist'),
-  filename: 'vue-json-edit.js',
+  filename: '[name].[hash].js',
   library: 'vue-json-edit',
   libraryTarget: 'umd',
 };

@@ -13,7 +13,6 @@ const install = (Vue) => {
   Vue.component('JsonEditor', JsonEditor)
   Vue.component('json-view', JsonView)
   Vue.component('array-view', ArrayView)
-
 }
 
 export default install

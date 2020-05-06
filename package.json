@@ -1,8 +1,8 @@
 {
-  "name": "vue-json-edit",
-  "version": "1.4.3",
+  "name": "vue-json-edit-modal",
+  "version": "1.0.0",
   "description": "visual JSON editor built as an vue component",
-  "author": "Jinkin1995 <jinkin1995@gmail.com>",
+  "author": "melvinchng",
   "keywords": [
     "vue",
     "json"
@@ -11,11 +11,11 @@
   "module": "./dist/vue-json-edit.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jinkin1995/vue-json-edit.git"
+    "url": "git+https://github.com/melvinchng/vue-json-edit-modal.git"
   },
-  "homepage": "https://github.com/jinkin1995/vue-json-edit",
+  "homepage": "https://github.com/melvinchng/vue-json-edit-modal",
   "bugs": {
-    "url": "https://github.com/jinkin1995/vue-json-edit/issues"
+    "url": "https://github.com/melvinchng/vue-json-edit-modal/issues"
   },
   "license": "Apache 2",
   "scripts": {

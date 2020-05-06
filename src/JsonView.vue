@@ -13,6 +13,7 @@
             class="key-input"
             v-if="typeof item.name == 'string'"
             @blur="keyInputBlur(item, $event)"
+            @click="openModal(item, 'key')"
           />
           <i
             class="collapse-down v-json-edit-icon-arrow_drop_down"
@@ -38,6 +39,7 @@
                 v-model="item.remark"
                 class="val-input"
                 v-if="item.type == 'string'"
+                @click="openModal(item, 'value')"
               />
               <input
                 type="number"
@@ -45,6 +47,7 @@
                 class="val-input"
                 v-if="item.type == 'number'"
                 @input="numberInputChange(item)"
+                @click="openModal(item, 'value')"
               />
               <select
                 name="value"
@@ -76,6 +79,12 @@
     <div class="block add-key" @click="addItem" v-if="!toAddItem">
       <i class="v-json-edit-icon-add"></i>
     </div>
+
+    <form-modal v-if="showModal == true"
+      :data="modalData"
+      @close="closeModal"
+      :type="type"
+    />
   </div>
 </template>
 
@@ -90,7 +99,10 @@ export default {
       formats: ["string", "array", "object", "number", "boolean"],
       flowData: this.parsedData,
       toAddItem: false,
-      hideMyBlock: {}
+      hideMyBlock: {},
+      showModal: false,
+      type: null,
+      modalData: {},
     };
   },
   created() {
@@ -100,14 +112,25 @@ export default {
     parsedData: {
       handler(newValue, oldValue) {
         this.flowData = this.parsedData;
-      }
+      },
     }
   },
   components: {
     "item-add-form": ItemAddForm,
-    "array-view": () => import("./ArrayView.vue")
+    "array-view": () => import("./ArrayView.vue"),
+    "form-modal": () => import("./FormModal.vue")
   },
   methods: {
+    openModal: function(data, type) {
+      this.type = type
+      this.modalData = data
+      this.showModal = true
+    },
+
+    closeModal: function() {
+      this.showModal = false
+    },
+    
     delItem: function(parentDom, item, index) {
       this.flowData.splice(index, 1);
       if (this.hideMyBlock[index]) this.hideMyBlock[index] = false;

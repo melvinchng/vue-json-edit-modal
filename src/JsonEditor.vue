@@ -1,7 +1,9 @@
 <template>
   <json-view 
     :parsedData="parsedData" 
-    v-model="parsedData"></json-view>
+    v-model="parsedData"
+    :modalData="modalData"
+  ></json-view>
 </template>
 
 <script>
@@ -23,7 +25,8 @@ export default {
           cancelText: "cancel"
         }
       },
-    }
+    },
+    modalData: Object
   },
   provide () {
     return {
@@ -40,11 +43,6 @@ export default {
     this.parsedData = this.jsonParse(this.objData);
   },
   watch: {
-    objData: {
-      handler(newValue, oldValue) {
-        this.parsedData = this.jsonParse(this.objData);
-      }
-    },
     parsedData: {
       handler(newValue, oldValue) {
         if (JSON.stringify(newValue) === JSON.stringify(this.lastParsedData)) {
@@ -58,7 +56,7 @@ export default {
     }
   },
   components: {
-    "json-view": JsonView
+    "json-view": JsonView,
   },
   methods: {
     jsonParse: function (jsonStr) {

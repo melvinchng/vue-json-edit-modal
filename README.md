@@ -1,19 +1,18 @@
-# Vue-Json-Edit
+# Vue-Json-Edit-Modal
 
-> Visual JSON Editor built as an vue component. Provides a basic GUI
-
+> A modified version of [Visual JSON Editor](https://github.com/jinkin1995/vue-json-edit) that opens a modal on edit.
 
 </br>
 
 
-## **[DEMO](http://jinkin1995.github.io/vue-json-edit)**
+## **[DEMO](http://melvinchng.github.io/vue-json-edit-modal)**
 
 </br>
 
 
 ## Getting Started
 ```
-npm install vue-json-edit --save
+npm install vue-json-edit-modal --save
 ```
 
 </br>
